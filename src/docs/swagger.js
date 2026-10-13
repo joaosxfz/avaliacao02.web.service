@@ -1,4 +1,4 @@
-import swaggerJsdoc from "swagger-jsdoc"
+const swaggerJsdoc = require("swagger-jsdoc")
 
 const opcoes = {
     definition: {
@@ -12,4 +12,4 @@ const opcoes = {
     apis: ["./src/routes/missoes.routes.js"]
 }
 
-export default swaggerJsdoc(opcoes)
+module.exports = swaggerJsdoc(opcoes)

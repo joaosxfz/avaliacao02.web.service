@@ -36,7 +36,7 @@ const missoes = [
     }
 ]
 
-const proximoId = 6
+let proximoId = 6
 
 function novoId() {
     const id = proximoId
@@ -88,7 +88,7 @@ function resetMissoes() {
     proximoId = 6
 }
 
-export {
+module.exports = {
     missoes,
     novoId,
     resetMissoes

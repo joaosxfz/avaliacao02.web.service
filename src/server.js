@@ -1,8 +1,8 @@
-import app from "./app.js"
+const app = require("./app")
 
 app.listen(
     3000,
     () => console.log(
-        "Servidor averiguando porta 3000"
+        "Servidor rodando na porta 3000"
     )
 )

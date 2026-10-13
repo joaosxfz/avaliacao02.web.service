@@ -12,7 +12,6 @@
   },
   "license": "ISC",
   "author": "joaosxfz",
-  "type": "module",
   "main": "app.js",
   "directories": {
     "test": "tests"

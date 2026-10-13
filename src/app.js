@@ -1,8 +1,8 @@
-import express from "express"
-import cors from "cors"
-import swaggerUi from "swagger-ui-express"
-import missoesRoutes from "./routes/missoes.routes.js"
-import swaggerSpec from "./docs/swagger.js"
+const express = require("express")
+const cors = require("cors")
+const swaggerUi = require("swagger-ui-express")
+const missoesRoutes = require("./routes/missoes.routes")
+const swaggerSpec = require("./docs/swagger")
 
 const app = express()
 
@@ -22,4 +22,4 @@ app.use((req, res) => {
     })
 })
 
-export default app
+module.exports = app

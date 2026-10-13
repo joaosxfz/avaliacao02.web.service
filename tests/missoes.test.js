@@ -16,6 +16,7 @@ test("GET /status retorna status ok", async () => {
 
     expect(resposta.status).toBe(200)
     expect(resposta.body.status).toBe("ok")
+    expect(resposta.headers["content-type"]).toMatch(/json/)
 })
 
 
@@ -73,6 +74,7 @@ test("POST /missoes retorna erro quando o nome não é informado", async () => {
 
     expect(resposta.status).toBe(400)
     expect(resposta.body.error).toBe("Nome é obrigatório")
+    expect(resposta.headers["content-type"]).toMatch(/json/)
 })
 
 
@@ -118,6 +120,7 @@ test("PUT /missoes/:id retorna erro quando a missão não existe", async () => {
 
     expect(resposta.status).toBe(404)
     expect(resposta.body.error).toBe("Missão não encontrada")
+    expect(resposta.headers["content-type"]).toMatch(/json/)
 })
 
 
@@ -132,6 +135,7 @@ test("PUT /missoes/:id retorna erro quando os dados são inválidos", async () =
 
     expect(resposta.status).toBe(400)
     expect(resposta.body.error).toBe("Nome é obrigatório")
+    expect(resposta.headers["content-type"]).toMatch(/json/)
 })
 
 
@@ -193,7 +197,12 @@ test("GET /apod envia a data para a NASA", async () => {
 
     await request(app).get("/apod?date=2024-01-15")
 
-    expect(axios.get).toHaveBeenCalled()
+    expect(axios.get).toHaveBeenCalledWith(
+        "https://api.nasa.gov/planetary/apod",
+        expect.objectContaining({
+            params: expect.objectContaining({ date: "2024-01-15" })
+        })
+    )
 })
 
 
